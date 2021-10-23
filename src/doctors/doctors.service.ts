@@ -1,15 +1,20 @@
 import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateDoctorDto } from './dto/create-doctor.dto';
 import { UpdateDoctorDto } from './dto/update-doctor.dto';
 
+
 @Injectable()
 export class DoctorsService {
+
+  constructor(private readonly prisma: PrismaService){}
+
   create(createDoctorDto: CreateDoctorDto) {
-    return 'This action adds a new doctor';
+    return this.prisma.doctor.create({data:createDoctorDto});
   }
 
   findAll() {
-    return `This action returns all doctors`;
+    return this.prisma.doctor.findMany();
   }
 
   findOne(id: number) {

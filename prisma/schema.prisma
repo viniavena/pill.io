@@ -15,6 +15,7 @@ model Doctor {
   createdAt    DateTime       @default(now())
   fullName     String
   crm          String         @unique
+  speciality   String
   pacients     Pacient[]
   prescription Prescription[]
 }
