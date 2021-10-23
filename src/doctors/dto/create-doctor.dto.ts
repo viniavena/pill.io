@@ -7,6 +7,5 @@ export class CreateDoctorDto extends Doctor {
     fullName: string;
 
     @IsString()
-    
     crm: string;
 }

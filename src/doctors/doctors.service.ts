@@ -18,14 +18,14 @@ export class DoctorsService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} doctor`;
+    return this.prisma.doctor.findUnique({where: {id}})
   }
 
   update(id: number, updateDoctorDto: UpdateDoctorDto) {
-    return `This action updates a #${id} doctor`;
+    return this.prisma.doctor.update({where: {id}, data:updateDoctorDto});
   }
 
   remove(id: number) {
-    return `This action removes a #${id} doctor`;
+    return this.prisma.doctor.delete({where: {id}});
   }
 }
